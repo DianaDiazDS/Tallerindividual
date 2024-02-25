@@ -21,7 +21,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/mascota")
+@RequestMapping("/mascotas")
 public class MascotaController {
 
     @Autowired
@@ -86,4 +86,26 @@ public class MascotaController {
         }
     }
 
+    @GetMapping("/raza/{raza}")
+    public ResponseEntity<Object> findByRaza(@PathVariable String raza){
+        try {
+            return ResponseHandler.generateResponse("Succes",HttpStatus.OK,mascotaServices.findByRaza(raza));
+        }catch (Exception e){
+            return ResponseHandler.generateResponse("Error", HttpStatus.INTERNAL_SERVER_ERROR,e);
+        }
+    }
+
+
+    @GetMapping(value = "/getveterinarios/{id}")
+    public ResponseEntity<Object> getVeterinarios(@RequestParam("id") Integer id) {
+        try {
+            if (mascotaServices.findById(id) != null) {
+                return ResponseHandler.generateResponse("Succes", HttpStatus.OK,mascotaServices.getVeterinarios(mascotaServices.findById(id)));
+            } else {
+                return ResponseHandler.generateResponse("No se encuentra", HttpStatus.NOT_FOUND, mascotaServices.findById(id));
+            }
+        } catch (Error e) {
+            return ResponseHandler.generateResponse("Error", HttpStatus.INTERNAL_SERVER_ERROR, e);
+        }
+    }
 }

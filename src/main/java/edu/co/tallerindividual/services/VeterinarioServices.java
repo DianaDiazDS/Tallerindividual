@@ -1,7 +1,9 @@
 package edu.co.tallerindividual.services;
 
 
+import edu.co.tallerindividual.entities.Mascota;
 import edu.co.tallerindividual.entities.Veterinario;
+import edu.co.tallerindividual.repositories.MascotaRepository;
 import edu.co.tallerindividual.repositories.VeterinarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,8 @@ import java.util.Optional;
 public class VeterinarioServices {
     @Autowired
     VeterinarioRepository veterinarioRepository;
+    @Autowired
+    MascotaRepository mascotaRepository;
 
     public List<Veterinario> findAll() {
         return veterinarioRepository.findAll();
@@ -39,5 +43,7 @@ public class VeterinarioServices {
             return false;
         }
     }
-    
+    public List<Mascota> getMascotas(Veterinario veterinario) {
+        return mascotaRepository.findMascotaByVeterinarios(veterinario);
+    }
 }

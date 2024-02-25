@@ -2,6 +2,7 @@ package edu.co.tallerindividual.services;
 
 
 import edu.co.tallerindividual.entities.Dueño;
+import edu.co.tallerindividual.entities.Mascota;
 import edu.co.tallerindividual.repositories.DueñoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,4 +43,9 @@ public class DueñoServices {
             return false;
         }
     }
+
+    public List<Dueño> findByNombre(String nombre){
+        return dueñoRepository.findByNombre(nombre);
+    }
+
 }

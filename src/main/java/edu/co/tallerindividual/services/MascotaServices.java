@@ -2,7 +2,9 @@ package edu.co.tallerindividual.services;
 
 import edu.co.tallerindividual.entities.Dueño;
 import edu.co.tallerindividual.entities.Mascota;
+import edu.co.tallerindividual.entities.Veterinario;
 import edu.co.tallerindividual.repositories.MascotaRepository;
+import edu.co.tallerindividual.repositories.VeterinarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ import java.util.Optional;
 public class MascotaServices {
     @Autowired
     MascotaRepository mascotaRepository;
+
+    @Autowired
+    VeterinarioRepository veterinarioRepository;
 
     public List<Mascota> findAll() {
         return mascotaRepository.findAll();
@@ -46,5 +51,13 @@ public class MascotaServices {
             mascotaRepository.save(mascotaeditar);
         }
         return mascotaeditar;
+    }
+
+    public List<Mascota> findByRaza(String raza){
+        return mascotaRepository.findByRaza(raza);
+    }
+
+    public List<Veterinario> getVeterinarios(Mascota mascota) {
+        return veterinarioRepository.findVeterinarioByMascotas(mascota);
     }
 }

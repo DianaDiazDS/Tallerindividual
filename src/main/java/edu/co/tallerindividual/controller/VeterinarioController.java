@@ -2,6 +2,7 @@ package edu.co.tallerindividual.controller;
 
 import edu.co.tallerindividual.entities.Mascota;
 import edu.co.tallerindividual.entities.Veterinario;
+import edu.co.tallerindividual.services.MascotaServices;
 import edu.co.tallerindividual.services.VeterinarioServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,11 +20,13 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/veterinario")
+@RequestMapping("/veterinarios")
 public class VeterinarioController {
 
     @Autowired
     private VeterinarioServices veterinarioServices;
+    @Autowired
+    private MascotaServices mascotaServices;
 
     @GetMapping()
     public ResponseEntity<Object> findAll() {
@@ -75,4 +78,16 @@ public class VeterinarioController {
         }
     }
 
+    @GetMapping(value = "/getAnimales/{id}")
+    public ResponseEntity<Object> getMascotas(@RequestParam("id") Integer id) {
+        try {
+            if (veterinarioServices.findById(id) != null) {
+                return ResponseHandler.generateResponse("Succes", HttpStatus.OK,veterinarioServices.getMascotas(veterinarioServices.findById(id)));
+            } else {
+                return ResponseHandler.generateResponse("No se encuentra", HttpStatus.NOT_FOUND, mascotaServices.findById(id));
+            }
+        } catch (Error e) {
+            return ResponseHandler.generateResponse("Error", HttpStatus.INTERNAL_SERVER_ERROR, e);
+        }
+    }
 }

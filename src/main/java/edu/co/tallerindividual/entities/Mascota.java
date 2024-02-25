@@ -4,11 +4,10 @@ package edu.co.tallerindividual.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "mascotas")
+@Table(name = "mascota")
 public class Mascota  {
 
     @Id
@@ -21,7 +20,6 @@ public class Mascota  {
     @Column(length = 50, nullable = false)
     private String raza;
 
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FK_dueño" )
     @JsonIgnore
@@ -35,8 +33,6 @@ public class Mascota  {
             inverseJoinColumns = @JoinColumn(name = "idVeterianario")
     )
     private List<Veterinario> veterinarios;
-//carnet
-//    @OneToOne(mappedBy = "mascota",cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 
     @OneToOne(mappedBy = "mascota",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
     @JoinColumn(name = "idCarnet")

@@ -4,11 +4,10 @@ package edu.co.tallerindividual.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "veterinarios")
+@Table(name = "veterinario")
 public class Veterinario  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,8 +20,7 @@ public class Veterinario  {
     private Integer telefono;
 
 
-    //mascota
-//    @ManyToMany(mappedBy = "veterinarios", cascade = CascadeType.ALL)
+
     @ManyToMany(mappedBy = "veterinarios")
     @JsonIgnore
     private List<Mascota> mascotas;

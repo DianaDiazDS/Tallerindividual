@@ -3,11 +3,10 @@ package edu.co.tallerindividual.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.io.Serializable;
 
 
 @Entity
-@Table(name = "carnets")
+@Table(name = "carnet")
 public class Carnet  {
 
     @Id

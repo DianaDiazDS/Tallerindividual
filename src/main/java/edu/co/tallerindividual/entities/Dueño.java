@@ -3,11 +3,10 @@ package edu.co.tallerindividual.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "dueños")
+@Table(name = "dueño")
 public class Dueño {
 
     @Id
@@ -23,11 +22,7 @@ public class Dueño {
     @Column(length = 50,nullable = false)
     private String direcccion;
 
-//    @OneToMany(mappedBy = "dueño",fetch = FetchType.LAZY)
-//    @JsonIgnore
-//    private List<Mascota> mascota;
 
-    //    @OneToMany(mappedBy = "dueño",cascade = CascadeType.All)
     @OneToMany(mappedBy = "dueño", cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Mascota> mascotas;

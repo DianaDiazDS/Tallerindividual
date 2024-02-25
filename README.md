@@ -34,6 +34,26 @@ Para GET dueños:
 
 Para POST, PUT y DELETE respectivamente
 - /mascotas/{id} Envia y guarda los datos ingresados, necesita id del dueño y id de VETERINARIO
+EJEMPLO:
+  - {
+    "data": {
+    "idMascota": 5,
+    "nombre": "string",
+    "raza": "string",
+    "veterinarios": [
+    {
+    "idVeterinario": 1,
+    "nombre": "string",
+    "telefono": 0
+    },
+    {
+    "idVeterinario": 2,
+    "nombre": "string",
+    "telefono": 0
+    }
+    ]
+    }
+
 - /mascotas/{id} Actualiza el id con los datos ingresados
 - /mascotas/{id} Elimina los datos con el id ingresado
 

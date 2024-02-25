@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/carnet")
+@RequestMapping("/carnets")
 public class CarnetController {
     @Autowired
     private CarnetServices carnetServices;

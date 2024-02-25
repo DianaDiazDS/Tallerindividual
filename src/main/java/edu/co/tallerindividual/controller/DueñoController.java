@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/dueño")
+@RequestMapping("/dueños")
 public class DueñoController {
 
     @Autowired
@@ -69,6 +69,13 @@ public class DueñoController {
         }
     }
 
-
+    @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<Object> findByNombre(@PathVariable String nombre){
+        try {
+            return ResponseHandler.generateResponse("Succes",HttpStatus.OK,dueñoServices.findByNombre(nombre));
+        }catch (Exception e){
+            return ResponseHandler.generateResponse("Error", HttpStatus.INTERNAL_SERVER_ERROR,e);
+        }
+    }
 
 }
