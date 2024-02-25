@@ -17,7 +17,7 @@ public class Dueño {
     private String nombre;
 
     @Column(nullable = false)
-    private Integer telefono;
+    private Long telefono;
 
     @Column(length = 50,nullable = false)
     private String direcccion;
@@ -44,11 +44,11 @@ public class Dueño {
         this.nombre = nombre;
     }
 
-    public Integer getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 

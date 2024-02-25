@@ -17,7 +17,7 @@ public class Veterinario  {
     private String nombre;
 
     @Column(nullable = false)
-    private Integer telefono;
+    private Long telefono;
 
 
 
@@ -44,14 +44,13 @@ public class Veterinario  {
         this.nombre = nombre;
     }
 
-    public Integer getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
-
     public List<Mascota> getMascotas() {
         return mascotas;
     }

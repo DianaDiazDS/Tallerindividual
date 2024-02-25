@@ -18,7 +18,7 @@ si se elimina mascota no se elimina el veterinario ni dueño, pero si se elimina
 
 ## Rutas
 ### MASCOTA
-Para GET nascota:
+Para GET mascota:
 - /mascotas Retorna todos los elementos guardados en mascotas
 - /mascotas/{id} Retorna el elemento con un id especifico
 - /mascotas/getveterinarios/{id} Retorna el los veterinarioque atienden a esa mascota
@@ -29,23 +29,18 @@ Para POST, PUT y DELETE respectivamente
   EJEMPLO:
   ```json
   {
-    "data": {
-    "idMascota": 5,
-    "nombre": "string",
-    "raza": "string",
-    "veterinarios": [
+  "idMascota": 1,
+  "nombre": "zacha",
+  "raza": "beagle",
+  "veterinarios": [
     {
-    "idVeterinario": 1,
-    "nombre": "string",
-    "telefono": 0
+      "idVeterinario": 1
     },
-    {
-    "idVeterinario": 2,
-    "nombre": "string",
-    "telefono": 0
-    }
-    ]
-    }
+  {
+  "idVeterinario": 1
+  }
+  ]
+  }
 
 - /mascotas/{id} Actualiza el id con los datos ingresados
 - /mascotas/{id} Elimina los datos con el id ingresado
@@ -58,6 +53,14 @@ Para POST, PUT y DELETE respectivamente
   
   Para POST,PUT y DELETE respectivamente
   - /veterinarios/{id} Envia y guarda los datos ingresados
+  Ejemplo:
+    ```json
+      {
+      "idVeterinario": 1,
+      "nombre": "Lola Lopez",
+      "telefono": 3114543488
+      }
+  - 
   - /veterinarios/{id} Actualiza el id con los datos ingresados
   - /veterinarios/{id} Elimina los datos con el id ingresado
 
@@ -68,7 +71,15 @@ Para GET dueños:
 - /dueños/{id} Retorna el elemento con un id especifico
 - /dueños/nombre/{nombre} Retorna el elemento con un id especifico
 Para POST, PUT y DELETE respectivamente
-- /dueños/{id} Envia y guarda los datos ingresados
+-/dueños/{id} Envia y guarda los datos ingresados
+    Ejemplo:
+  ```json          
+    {
+    "id": 1,
+    "nombre": "Marta Ramirez",
+    "telefono": 3114543484,
+    "direcccion": "calle 5"
+    }
 - /dueños/{id} Actualiza el id con los datos ingresados
 - /dueños/{id} Elimina los datos con el id ingresado
   
@@ -79,6 +90,12 @@ Para POST, PUT y DELETE respectivamente
 
 Para POST y PUT respectivamente
 - /carnets/{id} Envia y guarda los datos ingresados, necesita **id de MASCOTA**
+  Ejemplo:
+    ```json
+        {
+  "idCarnet": 1,
+  "descripcion": "vacunas al dia"
+  }
 - /carnets/{id} Actualiza el id con los datos ingresados
 
 
