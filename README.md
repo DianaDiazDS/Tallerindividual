@@ -2,11 +2,12 @@
 ## Acceso
 
 http://localhost:18080/
-##orden
+
+orden
 
 Primero se crea dueño y veterinario
-segundo  se crea la mascota con el id por param del dueño y en el body id del veterinario, 
-tercero despues creamos carnet ascociandolo al id de la mascota
+segundo  se crea la mascota con el **id por param del dueño** y en el body **id del veterinario**, 
+tercero despues creamos carnet ascociandolo al **id de la mascota**
 
 ORDEN de eliminar:
 
@@ -16,25 +17,17 @@ si se elimina mascota no se elimina el veterinario ni dueño, pero si se elimina
 
 
 ## Rutas
+###MASCOTA
 Para GET nascota:
 - /mascotas Retorna todos los elementos guardados en mascotas
 - /mascotas/{id} Retorna el elemento con un id especifico
-
-Para GET veterinario:
-- /veterinarios Retorna todos los elementos guardados en veterinarios
-- /veterinarios/{id} Retorna el elemento con un id especifico
-
-Para GET dueños:
-- /dueños Retorna todos los elementos guardados en dueños
-- /dueños/{id} Retorna el elemento con un id especifico
-- 
-  Para GET carnet:
-- /carnets Retorna todos los elementos guardados en carnet
-- /carnets/{id} Retorna el elemento con un id especifico
-
+- /mascotas/getveterinarios/{id} Retorna el los veterinarioque atienden a esa mascota
+- /mascotas/raza/{raza} retorna filtro por raza
+  
 Para POST, PUT y DELETE respectivamente
 - /mascotas/{id} Envia y guarda los datos ingresados, necesita id del dueño y id de VETERINARIO
-EJEMPLO:
+  EJEMPLO:
+  ```json
   - {
     "data": {
     "idMascota": 5,
@@ -57,19 +50,35 @@ EJEMPLO:
 - /mascotas/{id} Actualiza el id con los datos ingresados
 - /mascotas/{id} Elimina los datos con el id ingresado
 
+###VETERINARIO
+Para GET veterinario:
+- /veterinarios Retorna todos los elementos guardados en veterinarios
+- /veterinarios/{id} Retorna el elemento con un id especifico
+- /veterinarios/getAnimales/{id} Retorna el las mascotas que atiende ese veterinario
+  
+Para POST, y DELETE respectivamente
+- /veterinarios/{id} Envia y guarda los datos ingresados
+- /veterinarios/{id} Actualiza el id con los datos ingresados
+- /veterinarios/{id} Elimina los datos con el id ingresado
 
+
+###DUEÑO
+Para GET dueños:
+- /dueños Retorna todos los elementos guardados en dueños
+- /dueños/{id} Retorna el elemento con un id especifico
+- /dueños/nombre/{nombre} Retorna el elemento con un id especifico
 Para POST, PUT y DELETE respectivamente
 - /dueños/{id} Envia y guarda los datos ingresados
 - /dueños/{id} Actualiza el id con los datos ingresados
 - /dueños/{id} Elimina los datos con el id ingresado
 - 
-  Para POST, y DELETE respectivamente
-- /veterinarios/{id} Envia y guarda los datos ingresados
-- /veterinarios/{id} Actualiza el id con los datos ingresados
-- /veterinarios/{id} Elimina los datos con el id ingresado
+###CARNET
+  Para GET carnet:
+- /carnets Retorna todos los elementos guardados en carnet
+- /carnets/{id} Retorna el elemento con un id especifico
 
 Para POST, y DELETE respectivamente
-- /carnets/{id} Envia y guarda los datos ingresados, necesita id de MASCOTA
+- /carnets/{id} Envia y guarda los datos ingresados, necesita **id de MASCOTA**
 - /carnets/{id} Actualiza el id con los datos ingresados
 
 
